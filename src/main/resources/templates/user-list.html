@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<body>
+
+<h3>User List page</h3>
+
+    <table>
+        <thead>
+        <tr class="listHeading">
+            <th><span th:text="#{fieldLabel.userId}"></span></th>
+            <th><span th:text="#{fieldLabel.username}"></span></th>
+            <th><span th:text="#{fieldLabel.status}"></span></th>
+            <th><span th:text="#{fieldLabel.role}"></span></th>
+            <th><span th:text="#{fieldLabel.action}"></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}" class="listRecord">
+            <td th:text="${user.userId}">Id</td>
+            <td th:text="${user.name}">Name</td>
+            <td th:text="${user.isActive}">isActive</td>
+            <td th:text="${user.role}">Role</td>
+            <td class="align-middle">
+                <a th:href="@{/admin/banUser(userId=${user.userId})}"
+                   class="btn btn-info btn-block">
+                    Ban
+                </a>
+<!--                <a th:href="@{/admin/updateRole(userId=${user.userId})}"-->
+<!--                   class="btn btn-danger btn-block">-->
+<!--                    Update Role-->
+<!--                </a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
