@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -29,15 +30,47 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
-    public User(int userId, String name, String password, boolean isActive, RoleEnum role) {
+    public User(int userId, String name, String password, boolean isActive, RoleEnum role, String email, String resetPasswordToken, String confirmPassword) {
         this.userId = userId;
         this.name = name;
         this.password = password;
         this.isActive = isActive;
         this.role = role;
+        this.email = email;
+        this.resetPasswordToken = resetPasswordToken;
+        this.confirmPassword = confirmPassword;
     }
 
+    @Email(message="Please provide a valid email")
+    private String email;
+    private String resetPasswordToken;
+    private String confirmPassword;
+
     public User() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public User(int id, String name, String password, boolean isActive) {

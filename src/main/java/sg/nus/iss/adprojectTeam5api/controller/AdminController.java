@@ -24,7 +24,7 @@ public class AdminController {
     @RequestMapping(value = "/userList")
     public String manageUser(Model model) {
 
-        List<User> userList = userService.findAllUser();
+        List<User> userList = userService.findAllUsers();
         model.addAttribute("users", userList);
         return "user-list";
     }

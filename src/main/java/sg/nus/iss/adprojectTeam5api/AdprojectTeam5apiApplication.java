@@ -20,8 +20,9 @@ public class AdprojectTeam5apiApplication {
 
     ) {
         return (args) -> {
-            User admin = new User(1, "admin", "password", true, RoleEnum.ADMIN);
-			userRepository.saveAndFlush(admin);
+            User ei= userRepository.saveAndFlush(new User(1,"EiNgon","password",true,RoleEnum.ADMIN,"eingonpwint13254@gmail.com",null,null));
+
+            userRepository.saveAndFlush(ei);
         };
 
     }
